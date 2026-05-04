@@ -1,5 +1,6 @@
 package com.helloword.loteria.services;
 
+import com.helloword.loteria.entity.Bet;
 import com.helloword.loteria.entity.User;
 import com.helloword.loteria.exceptions.DuplicateBetException;
 import com.helloword.loteria.exceptions.InvalidBetException;
@@ -23,8 +24,7 @@ public class LotteryServiceImpl implements LotteryService {
     @Override
     public void registerUsers(User u) {
         if(userRepository.existsById(u.getId())){
-            throw new UserAlreadyExistsException("Usuario con id: "+u.getId()+" ya existe");
-
+            throw new UserAlreadyExistsException("Usuario con id: " + u.getId() + " ya existe");
         }
         userRepository.save(u);
     }
@@ -36,26 +36,39 @@ public class LotteryServiceImpl implements LotteryService {
 
     @Override
     public User findUserById(String id) {
-        return userRepository.findById(id).orElseThrow(()->
-                new UserNotFoundException("Usuario con id: "+id+" no encontrado"));
+        return userRepository.findById(id).orElseThrow(() ->
+                new UserNotFoundException("Usuario con id: " + id + " no encontrado"));
     }
 
     @Override
-    public void addApuestaToUser(String id, List<Integer> apuesta) {
-        User user=findUserById(id);
-        if(apuesta.size()!=6){
+    public void addApuestaToUser(String id, List<Integer> apuestaNumeros) {
+        // Buscamos al usuario (Esto disparará el Aspecto de auditoría)
+        User user = findUserById(id);
+
+        // 1. Validaciones de negocio (Requisito 2 y 3.d)
+        if (apuestaNumeros.size() != 6) {
             throw new InvalidBetException("La apuesta debe contener exactamente 6 números");
-        } else if (apuesta.stream().anyMatch(num -> num < 1 || num > 49)) {
+        }
+
+        if (apuestaNumeros.stream().anyMatch(num -> num < 1 || num > 49)) {
             throw new InvalidBetException("Los números de la apuesta deben estar entre 1 y 49");
-        } else if (new HashSet<>(apuesta).size() != apuesta.size()) {
+        }
+
+        if (new HashSet<>(apuestaNumeros).size() != apuestaNumeros.size()) {
             throw new InvalidBetException("Los números de la apuesta deben ser únicos");
         }
-        if (user.getApuestas().contains(apuesta)){
-            throw new DuplicateBetException("La apuesta ya existe para el usuario con id: "+id);
 
+        // 2. Creamos el objeto Bet a partir de la lista de números
+        Bet nuevaApuesta = new Bet(apuestaNumeros);
+
+        // 3. Verificación de duplicados (Requisito 3.e)
+        // Importante: Esto funciona porque añadimos equals() y hashCode() a la clase Bet
+        if (user.getApuestas().contains(nuevaApuesta)) {
+            throw new DuplicateBetException("La apuesta ya existe para el usuario con id: " + id);
         }
 
-        user.getApuestas().add(apuesta);
+        // 4. Añadimos la apuesta al usuario y guardamos
+        user.getApuestas().add(nuevaApuesta);
         userRepository.save(user);
     }
 }
