@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <!--PROPIEDADES: Nombre de los archivos -->
-    <property name="APP_LOG" value="application.log" />
-    <property name="AUDIT_LOG" value="audit.log" />
+    <!-- Definimos dónde se guardarán los logs -->
+    <property name="LOG_PATH" value="./logs" />
 
-    <!--APENDER PARA APPLICATION.LOG (Registro general) -->
-    <appender name="FILE-APP" class="ch.qos.logback.core.FileAppender">
-        <file>${APP_LOG}</file>
+    <!-- 1. Consola (para ver qué pasa mientras programas) -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-        <!--Formato de log: fecha, hilo, nivel, logger y mensaje-->
+            <pattern>%d{HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 2. Archivo application.log (General) -->
+    <appender name="APPLICATION_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>application.log</file>
+        <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- 2. APPENDER PARA AUDIT.LOG (Solo servicios) -->
-    <appender name="FILE-AUDIT" class="ch.qos.logback.core.FileAppender">
-        <file>${AUDIT_LOG}</file>
+    <!-- 3. Archivo audit.log (Solo para servicios - Requisito 4) -->
+    <appender name="AUDIT_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>audit.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} - AUDIT - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!--CONFIGURACIÓN DEL LOGGER DE AUDITORÍA-->
-    <!--'additivity=false' para que lo de auditoría NO se duplique en el log general -->
+    <!-- Logger específico para el Aspecto de Auditoría -->
     <logger name="AuditLogger" level="INFO" additivity="false">
-        <appender-ref ref="FILE-AUDIT" />
+        <appender-ref ref="AUDIT_FILE" />
+        <appender-ref ref="STDOUT" />
     </logger>
 
-    <!--4.LOG BASE (Nivel INFO por defecto) -->
+    <!-- Configuración por defecto para toda la app -->
     <root level="INFO">
-        <appender-ref ref="FILE-APP" />
-        <!-- También lo mandamos a consola para que lo veáis mientras programáis -->
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="APPLICATION_FILE" />
     </root>
 
 </configuration>
