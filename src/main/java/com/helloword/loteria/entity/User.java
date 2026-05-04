@@ -9,11 +9,11 @@ import java.util.List;
 public class User {
 
     @Id
-    private String id; // Requisito 1: ID único
+    private String id;
 
     private String name;
 
-    // Relación OneToMany: Un usuario, muchas apuestas
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private List<Bet> bets = new ArrayList<>();
@@ -31,7 +31,6 @@ public class User {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    // Cambiado a getApuestas para que el servicio de tu compañero funcione
     public List<Bet> getApuestas() {
         return bets;
     }
@@ -40,7 +39,6 @@ public class User {
         this.bets = bets;
     }
 
-    // Requisito 3.c: Muestra datos detallados cuando el nivel sea DEBUG
     @Override
     public String toString() {
         return "User{" +

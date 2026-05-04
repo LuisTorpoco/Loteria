@@ -42,10 +42,8 @@ public class LotteryServiceImpl implements LotteryService {
 
     @Override
     public void addApuestaToUser(String id, List<Integer> apuestaNumeros) {
-        // Buscamos al usuario (Esto disparará el Aspecto de auditoría)
         User user = findUserById(id);
 
-        // 1. Validaciones de negocio (Requisito 2 y 3.d)
         if (apuestaNumeros.size() != 6) {
             throw new InvalidBetException("La apuesta debe contener exactamente 6 números");
         }
@@ -62,7 +60,6 @@ public class LotteryServiceImpl implements LotteryService {
         Bet nuevaApuesta = new Bet(apuestaNumeros);
 
         // 3. Verificación de duplicados (Requisito 3.e)
-        // Importante: Esto funciona porque añadimos equals() y hashCode() a la clase Bet
         if (user.getApuestas().contains(nuevaApuesta)) {
             throw new DuplicateBetException("La apuesta ya existe para el usuario con id: " + id);
         }
