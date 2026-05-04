@@ -16,10 +16,9 @@ se guarde un log de auditoría sin tener que escribir código extra.
 public class ServiceAuditAspect {
     /*
     El usuario llama a un endpoint (ej. POST /users/USR001/bets).
-    Spring busca el método en el LotteryService.
-    Mi aspecto salta antes que lo de juan se ejecute, y registra el acceso al servicio y método.
-    Se escribe en audit.log
-    El servicio de tu compañero se ejecuta normalmente.
+    Spring busca el metodo del servicio correspondiente
+    Mi aspecto salta antes que lo de juan se ejecute, y registra el acceso al servicio y metodo
+    Se escribe en audit.log y asi el servicio se ejecuta normalmente
      */
 
     // Apuntamos al logger específico que creamos en el XML
@@ -27,6 +26,7 @@ public class ServiceAuditAspect {
 
     //En este ejemplo, se interceptan todos los métodos dentro de cualquier clase en el paquete "services"
     @Before("execution(* com.helloword.loteria..services..*(..))")
+    //Se ejecuta antes de llamar cualquier servicio
     public void auditServiceCall(JoinPoint joinPoint) {
         String serviceName = joinPoint.getSignature().getDeclaringType().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
