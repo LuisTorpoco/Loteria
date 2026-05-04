@@ -15,7 +15,6 @@ public class LotteryServiceImpl implements LotteryService {
         this.userRepository = userRepository;
     }
 
-
     @Override
     public void resgisterUsers(User u) {
 
