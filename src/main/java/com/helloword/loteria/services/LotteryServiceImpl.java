@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class LotteryServiceImpl implements LotteryService {
@@ -22,7 +21,7 @@ public class LotteryServiceImpl implements LotteryService {
     }
 
     @Override
-    public void resgisterUsers(User u) {
+    public void registerUsers(User u) {
         if(userRepository.existsById(u.getId())){
             throw new UserAlreadyExistsException("Usuario con id: "+u.getId()+" ya existe");
 
