@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!--PROPIEDADES: Nombre de los archivos -->
+    <property name="APP_LOG" value="application.log" />
+    <property name="AUDIT_LOG" value="audit.log" />
+
+    <!--APENDER PARA APPLICATION.LOG (Registro general) -->
+    <appender name="FILE-APP" class="ch.qos.logback.core.FileAppender">
+        <file>${APP_LOG}</file>
+        <encoder>
+        <!--Formato de log: fecha, hilo, nivel, logger y mensaje-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 2. APPENDER PARA AUDIT.LOG (Solo servicios) -->
+    <appender name="FILE-AUDIT" class="ch.qos.logback.core.FileAppender">
+        <file>${AUDIT_LOG}</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - AUDIT - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--CONFIGURACIÓN DEL LOGGER DE AUDITORÍA-->
+    <!--'additivity=false' para que lo de auditoría NO se duplique en el log general -->
+    <logger name="AuditLogger" level="INFO" additivity="false">
+        <appender-ref ref="FILE-AUDIT" />
+    </logger>
+
+    <!--4.LOG BASE (Nivel INFO por defecto) -->
+    <root level="INFO">
+        <appender-ref ref="FILE-APP" />
+        <!-- También lo mandamos a consola para que lo veáis mientras programáis -->
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
