@@ -7,6 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/*
+cada vez que se añada un servicio nuevo en el futuro
+se guarde un log de auditoría sin tener que escribir código extra.
+ */
 @Aspect
 @Component
 public class ServiceAuditAspect {
