@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Consola -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!-- Archivo de Aplicación (Errores y Warns) -->
+        <File name="AppLog" fileName="logs/application.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <!-- Archivo de Auditoría (AOP) -->
+        <File name="AuditLog" fileName="logs/audit.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} - AUDIT - %msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Loggers de tu paquete -->
+        <Logger name="com.helloword.loteria" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="AppLog"/>
+        </Logger>
+
+        <!-- Logger específico para Auditoría -->
+        <Logger name="AUDIT_LOGGER" level="info" additivity="false">
+            <AppenderRef ref="AuditLog"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
