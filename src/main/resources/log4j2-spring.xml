@@ -6,26 +6,23 @@
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
 
-       // Archivo de Aplicación (DEBUG y superior)
         <File name="AppLog" fileName="logs/application.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
-        // Archivo de Auditoría (Solo INFO)
         <File name="AuditLog" fileName="logs/audit.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} - AUDIT - %msg%n"/>
         </File>
     </Appenders>
 
     <Loggers>
-        // Logger específico para la aplicación, con nivel DEBUG para desarrollo
         <Logger name="com.helloword.loteria" level="debug" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="AppLog"/>
         </Logger>
 
         <!-- Logger específico para Auditoría -->
-        <Logger name="AUDIT_LOGGER" level="info" additivity="false">
+        <Logger name="AuditLogger" level="info" additivity="false">
             <AppenderRef ref="AuditLog"/>
         </Logger>
 
