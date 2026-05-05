@@ -1,0 +1,10 @@
+2026-05-05 16:35:07 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: registerUsers
+2026-05-05 16:35:52 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: addApuestaToUser
+2026-05-05 16:36:13 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: addApuestaToUser
+2026-05-05 16:36:47 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: findAllUsers
+2026-05-05 16:37:19 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: findUserById
+2026-05-05 16:37:37 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: findUserById
+2026-05-05 16:39:08 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: addApuestaToUser
+2026-05-05 16:40:06 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: addApuestaToUser
+2026-05-05 16:40:23 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: findUserById
+2026-05-05 16:40:54 - AUDIT - Acceso al servicio: LotteryServiceImpl -> Método: registerUsers

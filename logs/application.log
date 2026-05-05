@@ -1,0 +1,76 @@
+2026-05-05 16:34:30 [restartedMain] INFO  com.helloword.loteria.LoteriaApplication - Starting LoteriaApplication using Java 25.0.2 with PID 4556 (C:\Users\juand.castillo\Documents\Loteria\target\classes started by juand.castillo in C:\Users\juand.castillo\Documents\Loteria)
+2026-05-05 16:34:30 [restartedMain] DEBUG com.helloword.loteria.LoteriaApplication - Running with Spring Boot v4.0.6, Spring v7.0.7
+2026-05-05 16:34:30 [restartedMain] INFO  com.helloword.loteria.LoteriaApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-05 16:34:33 [restartedMain] INFO  com.helloword.loteria.LoteriaApplication - Started LoteriaApplication in 3.887 seconds (process running for 4.538)
+2026-05-05 16:35:07 [http-nio-8080-exec-1] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Intentando registrar usuario con ID: USR001 y con Nombre: Juan
+2026-05-05 16:35:08 [http-nio-8080-exec-1] INFO  com.helloword.loteria.services.LotteryServiceImpl - Operacion exitosa: Usuario registrado: User{id='USR001', name='Juan', bets=[]}
+2026-05-05 16:35:52 [http-nio-8080-exec-3] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Procesando nueva apuesta para usuario con ID: USR01. Apuesta: [10, 24, 35, 42, 5, 18]
+2026-05-05 16:35:52 [http-nio-8080-exec-3] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Buscando usuario con ID: USR01
+2026-05-05 16:35:52 [http-nio-8080-exec-3] WARN  com.helloword.loteria.services.LotteryServiceImpl - Operacion fallida: Usuario con id: USR01 no encontrado
+2026-05-05 16:35:52 [http-nio-8080-exec-3] INFO  com.helloword.loteria.exceptions.GlobalExceptionHandler - Usuario no encontrado en el sistema.
+2026-05-05 16:36:13 [http-nio-8080-exec-2] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Procesando nueva apuesta para usuario con ID: USR001. Apuesta: [10, 24, 35, 42, 5, 18]
+2026-05-05 16:36:13 [http-nio-8080-exec-2] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Buscando usuario con ID: USR001
+2026-05-05 16:36:13 [http-nio-8080-exec-2] INFO  com.helloword.loteria.services.LotteryServiceImpl - Operacion exitosa: Apuesta agregada para usuario con ID: USR001
+2026-05-05 16:36:13 [http-nio-8080-exec-2] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Detalle técnico - Apuesta guardada: Apuesta[10, 24, 35, 42, 5, 18] para usuario: USR001
+2026-05-05 16:36:47 [http-nio-8080-exec-4] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Obteniendo todos los usuarios registrados
+2026-05-05 16:36:47 [http-nio-8080-exec-4] INFO  com.helloword.loteria.services.LotteryServiceImpl - Operacion exitosa: 1 usuarios encontrados
+2026-05-05 16:37:19 [http-nio-8080-exec-5] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Buscando usuario con ID: USR001
+2026-05-05 16:37:37 [http-nio-8080-exec-6] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Buscando usuario con ID: USR01
+2026-05-05 16:37:37 [http-nio-8080-exec-6] WARN  com.helloword.loteria.services.LotteryServiceImpl - Operacion fallida: Usuario con id: USR01 no encontrado
+2026-05-05 16:37:37 [http-nio-8080-exec-6] INFO  com.helloword.loteria.exceptions.GlobalExceptionHandler - Usuario no encontrado en el sistema.
+2026-05-05 16:38:28 [http-nio-8080-exec-8] ERROR com.helloword.loteria.exceptions.GlobalExceptionHandler - ERROR CRÍTICO NO CONTROLADO: 
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:260)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:434)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:376)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:116)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:68)
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:544)
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1157)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:951)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:653)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:723)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1801)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-05-05 16:39:08 [http-nio-8080-exec-7] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Procesando nueva apuesta para usuario con ID: USR001. Apuesta: [10, 24, 35]
+2026-05-05 16:39:08 [http-nio-8080-exec-7] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Buscando usuario con ID: USR001
+2026-05-05 16:39:08 [http-nio-8080-exec-7] WARN  com.helloword.loteria.services.LotteryServiceImpl - Operacion fallida: Apuesta inválida para usuario con id: USR001. Detalles: La apuesta debe contener exactamente 6 números
+2026-05-05 16:39:08 [http-nio-8080-exec-7] ERROR com.helloword.loteria.exceptions.GlobalExceptionHandler - ERROR: Intento de registro de apuesta no válida. Detalles de validación fallidos.
+2026-05-05 16:40:06 [http-nio-8080-exec-9] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Procesando nueva apuesta para usuario con ID: USR001. Apuesta: [10, 24, 35, 42, 5, 18]
+2026-05-05 16:40:06 [http-nio-8080-exec-9] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Buscando usuario con ID: USR001
+2026-05-05 16:40:06 [http-nio-8080-exec-9] INFO  com.helloword.loteria.services.LotteryServiceImpl - Operacion exitosa: Apuesta agregada para usuario con ID: USR001
+2026-05-05 16:40:06 [http-nio-8080-exec-9] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Detalle técnico - Apuesta guardada: Apuesta[10, 24, 35, 42, 5, 18] para usuario: USR001
+2026-05-05 16:40:23 [http-nio-8080-exec-10] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Buscando usuario con ID: USR001
+2026-05-05 16:40:54 [http-nio-8080-exec-1] DEBUG com.helloword.loteria.services.LotteryServiceImpl - Intentando registrar usuario con ID: USR001 y con Nombre: Juan
+2026-05-05 16:40:54 [http-nio-8080-exec-1] WARN  com.helloword.loteria.services.LotteryServiceImpl - Operacion fallida: Usuario con id: USR001 ya existe
+2026-05-05 16:40:54 [http-nio-8080-exec-1] INFO  com.helloword.loteria.exceptions.GlobalExceptionHandler - Intento de registro de usuario con ID ya existente.

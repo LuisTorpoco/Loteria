@@ -87,6 +87,7 @@ public class LotteryServiceImpl implements LotteryService {
         user.getApuestas().add(nuevaApuesta);
         userRepository.save(user);
 
-        log.info("Operacion exitosa: Apuesta agregada para usuario con ID: {}. Apuesta: {}", id, nuevaApuesta);
+        log.info("Operacion exitosa: Apuesta agregada para usuario con ID: {}", id);
+        log.debug("Detalle técnico - Apuesta guardada: {} para usuario: {}", nuevaApuesta, id);
     }
 }
